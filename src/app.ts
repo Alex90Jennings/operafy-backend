@@ -1,16 +1,21 @@
-const express = require('express')
+import express, { Request, Response } from "express";
 const app = express()
 const port = 4000
 
 app.use(express.json())
-
-app.get("/", (req, res) => {
-    return res.send("TS wins")
+app.all("/api/data", (req: Request, res: Response) =>{
+    return res.sendStatus(200)
 })
 
-app.post("/api/data", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
+    return res.json({
+        "status": true
+    })
+})
+
+app.post("/api/data", (req: Request, res: Response) => {
     console.log(req.body)
-    return res.send(200, "you got it")
+    return res.sendStatus(200)
 })
 
 app.listen(port, () =>{
