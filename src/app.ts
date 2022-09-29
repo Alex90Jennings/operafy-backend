@@ -3,20 +3,17 @@ const app = express()
 const port = 4000
 
 app.use(express.json())
-app.all("/api/data", (req: Request, res: Response) =>{
-    return res.sendStatus(200)
-})
 
-app.get("/", (req: Request, res: Response) => {
-    return res.json({
-        "status": true
+app.route("/")
+    .get((req: Request, res: Response) => {
+        return res.send('you made a GET req')
     })
-})
-
-app.post("/api/data", (req: Request, res: Response) => {
-    console.log(req.body)
-    return res.sendStatus(200)
-})
+    .post((req: Request, res: Response) => {
+        return res.send('you made a POST req')
+    })
+    .all((req: Request, res: Response) => {
+        return res.send('you made a X req')
+    })
 
 app.listen(port, () =>{
     console.log(`Application listening at http://localhost:${port}`)
