@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 require('dotenv').config()
 import config from 'config'
-import connectToDb from "../utils/connectToDb";
+import connectToDb from "./utils/connectToDb";
 import router from './routes'
 import userRouter from './routes/user'
 import authRouter from './routes/auth'
