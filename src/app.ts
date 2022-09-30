@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express";
+require('dotenv').config()
+import config from 'config'
 const app = express()
-const port = 4000
+const port = config.get('port')
 
 app.use(express.json())
 
